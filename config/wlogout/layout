@@ -1,0 +1,30 @@
+{
+    "label" : "lock",
+    "action" : "~/.config/scripts/lock.sh",
+    "text" : "[ L ]  BLOQUEAR",
+    "keybind" : "l"
+}
+{
+    "label" : "logout",
+    "action" : "niri msg action quit",
+    "text" : "[ E ]  SALIR",
+    "keybind" : "e"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "[ U ]  SUSPENDER",
+    "keybind" : "u"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "[ R ]  REINICIAR",
+    "keybind" : "r"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "[ S ]  APAGAR",
+    "keybind" : "s"
+}

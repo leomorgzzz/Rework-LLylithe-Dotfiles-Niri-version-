@@ -1,0 +1,63 @@
+
+* {
+    border: none;
+    font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font", monospace;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #2e3440; 
+    color: #ffffff; 
+    border-bottom: 2px solid #434c5e;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    background-color: transparent;
+    color: #ffffff; 
+}
+
+#workspaces button.active {
+    color: #b9b8cf; 
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+
+#memory,
+#backlight,
+#pulseaudio,
+#network,
+#clock,
+#battery {
+    padding: 0 12px;
+    color: #ffffff;
+}
+
+
+#battery.charging, #battery.plugged {
+    color: #a3be8c; 
+}
+
+#battery.critical:not(.charging) {
+    color: #bf616a; 
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network.disconnected {
+    color: #bf616a; 
+}
+
+@keyframes blink {
+    to {
+        color: #ffffff;
+    }
+}

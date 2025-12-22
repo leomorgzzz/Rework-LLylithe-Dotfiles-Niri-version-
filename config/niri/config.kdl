@@ -1,0 +1,137 @@
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+
+spawn-at-startup "mako"
+spawn-at-startup "waybar"
+spawn-at-startup "bash" "-c" "swww-daemon & sleep 1 && swww img /$HOME/Pictures/wallpaper.jpg"
+
+
+input {
+    keyboard {
+        xkb {
+            layout "latam"
+        }
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+}
+
+
+layout {
+    gaps 8
+    background-color "transparent"
+    
+   
+    focus-ring {
+        off
+    }
+
+   
+    border {
+	off
+    }
+    
+    shadow {
+	on
+	softness 30
+	spread 5
+	offset x=0 y=5
+	color "#0000007A"
+    }
+   
+    default-column-width { proportion 0.5; }
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+}
+
+
+
+layer-rule {
+    match namespace="waybar"
+    match at-startup=true
+    opacity 0.8
+}
+
+
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+        
+}
+
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+
+
+binds {
+
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Return { spawn "kitty"; }
+    Mod+D { spawn "rofi" "-show" "drun"; }
+    Mod+Shift+E { spawn "~/.config/scripts/powermenu.sh"; }
+    Mod+Q { close-window; }
+
+
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Shift+H    { move-column-left; }
+    Mod+Shift+L    { move-column-right; }
+
+
+    Mod+F { maximize-column; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+    Mod+Space       { toggle-window-floating; }
+    Mod+Tab         { toggle-overview; }
+
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "+5%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
+
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+    
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+}
+
+window-rule{
+    match app-id="kitty"
+    draw-border-with-background false
+    opacity 0.98
+}

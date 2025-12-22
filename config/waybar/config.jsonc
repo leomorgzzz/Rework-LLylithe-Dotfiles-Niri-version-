@@ -1,0 +1,59 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+
+
+    "modules-left": ["memory", "backlight", "pulseaudio"],
+    "modules-center": ["niri/workspaces"],
+    "modules-right": ["network", "clock", "battery"],
+
+
+
+    "niri/workspaces": {
+        "format": "{index}",
+        "all-outputs": true
+    },
+
+    "memory": {
+        "interval": 1,
+        "format": "RAM: {percentage}%"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": " {percent}%"
+    },
+
+    "pulseaudio": {
+        "format": "󰕾 {volume}%",
+        "format-muted": " Muted"
+    },
+
+    "network": {
+        "format-wifi": "{ifname} / {essid} 󰤨  ({signalStrength}%)",
+        "format-ethernet": "{ifname} / {essid} 󰤨  ({signalStrength}%)",
+        "format-disconnected": "no wifi :(",
+        "tooltip-format": "{essid} ({signalStrength}%)"
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%m.%d.%y   %H:%M:%S}"
+    },
+
+    "battery": {
+        "interval": 5,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "⚡︎ {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", ""] 
+    }
+}

@@ -1,0 +1,45 @@
+
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$line_break\
+$character"""
+
+add_newline = true
+
+
+[username]
+show_always = true
+style_user = "bold #88C0D0" 
+style_root = "bold #BF616A" 
+format = "[$user]($style)@"
+
+[hostname]
+ssh_only = false
+style = "bold #88C0D0" 
+format = "[$hostname]($style) " 
+
+
+[directory]
+style = "bold #81A1C1" 
+format = "in [$path]($style) "
+truncation_length = 3
+
+
+[git_branch]
+symbol = " "
+style = "bold #5E81AC" 
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+style = "bold #D08770" 
+format = "[$all_status$ahead_behind]($style) "
+
+
+[character]
+success_symbol = "[>](#A3BE8C)" 
+error_symbol = "[>](#BF616A)"   
